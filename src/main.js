@@ -1,12 +1,16 @@
 import Vue from 'vue';
+// import VueAwesomeSwiper from 'vue-awesome-swiper';
+import AOS from 'aos';
 import Vue2Editor from 'vue2-editor';
 import {
   configure, ValidationProvider, ValidationObserver, extend,
 } from 'vee-validate';
 import * as rules from 'vee-validate/dist/rules';
 import { messages } from 'vee-validate/dist/locale/zh_TW.json';
+// import { dom } from '@fortawesome/fontawesome-svg-core';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
@@ -21,13 +25,19 @@ import './bus';
 Vue.config.productionTip = false;
 
 // 插件
+// swiper
+// Vue.use(VueAwesomeSwiper);
+// aos 動畫
+AOS.init();
+// 文字編輯器
 Vue.use(Vue2Editor);
 // vue-loading-overlay
 Vue.component('Loading', Loading);
 // axios
 Vue.use(VueAxios, axios);
 // 載入font-awesome
-library.add(fas);
+// dom.watch();
+library.add(fas, fab);
 // 載入font-awesome
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 extend('secret', {

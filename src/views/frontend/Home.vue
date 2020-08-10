@@ -2,9 +2,9 @@
   <div class="home">
     <loading :active.sync="isLoading"></loading>
     <div class="container">
-      <nav class="navbar navbar-expand-sm fixed-top bg-white shadow">
+      <nav class="navbar navbar-expand-sm fixed-top shadow">
         <div class="container">
-          <a class="navbar-brand" href="#">小農工坊</a>
+          <router-link to="/" class="navbar-brand">小農工坊</router-link>
           <button
             class="navbar-toggler"
             type="button"
@@ -16,8 +16,7 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div
-          class="collapse navbar-collapse justify-content-lg-between" id="navbarNavDropdown">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
                 <router-link to="/" class="nav-link">首頁</router-link>
@@ -37,19 +36,63 @@
           </div>
         </div>
       </nav>
-      <main>
-        <div class="container">
-          <div class="row">
-            <router-view @updateCart="getCart()"></router-view>
-          </div>
+    </div>
+
+    <main class="mb-5">
+      <router-view @updateCart="getCart()"></router-view>
+    </main>
+
+    <router-link
+      to="/cart"
+      class="cartLink
+      nav-link rounded-circle d-flex flex-column align-items-center justify-content-center shadow"
+      v-if="cart.length !== 0"
+    >
+      <span class="cartNum badge badge-pill badge-danger">{{ cart.length }}</span>
+      <font-awesome-icon icon="shopping-cart" size="2x" />
+      購物車
+    </router-link>
+
+    <div class="footer bg-primary py-3 text-white">
+      <div class="container">
+        <div class="footer__navbar d-flex justify-content-between align-items-center mb-3 pb-3">
+          <router-link to="/" class="navbar-brand text-white p-0">小農工坊</router-link>
+          <ul class="list-unstyled d-flex mb-0">
+            <li class="mr-4">
+              <a href="#">
+                <font-awesome-icon
+                  :icon="['fab', 'facebook-square']"
+                  size="2x"
+                  class="text-white"
+                />
+              </a>
+            </li>
+            <li class="mr-4">
+              <a href="#">
+                <font-awesome-icon :icon="['fab', 'instagram']" size="2x" class="text-white" />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <font-awesome-icon :icon="['fab', 'line']" size="2x" class="text-white" />
+              </a>
+            </li>
+          </ul>
         </div>
-      </main>
-      <router-link to="/cart"
-      class="cartLink nav-link rounded-circle d-flex flex-column align-items-center">
-        <span class="cartNum badge badge-pill badge-danger">{{cart.length}}</span>
-        <font-awesome-icon icon="shopping-cart" size="2x"/>
-        購物車
-      </router-link>
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-column">
+            <a href="tel:0800-987-654" class="text-white mb-3 d-flex align-items-center">
+              <font-awesome-icon icon="phone-alt" size="2x" class="mr-3" />
+              <span class="h3 mb-0">0800-987-654</span>
+            </a>
+            <a href="mailto:fruitstroe@business.com" class="text-white d-flex align-items-center">
+              <font-awesome-icon icon="envelope" size="2x" class="mr-3" />
+              <span class="h3 mb-0">fruitstroe@business.com</span>
+            </a>
+          </div>
+          <p class="text-white mb-0 align-self-end">© 2020 LOGO All Rights Reserved.</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -84,21 +127,27 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-  main {
-    margin-top: 60px;
-  }
+<style lang="scss">
+main {
+  margin-top: 58px;
+  min-height: 100%;
+}
 
-  .navbar-brand {
-    color: #000000;
-  }
+.navbar {
+  background: rgba(#ffffff, .87);
+}
 
-  .navbar-nav .nav-link {
-    color: #000;
-    font-weight: 700;
-  }
+.navbar-brand {
+  color: #000000;
+}
 
-  .navbar-nav .router-link-exact-active, .navbar-nav .nav-link:hover {
+.navbar-nav .nav-link {
+  color: #000;
+  font-weight: 700;
+}
+
+.navbar-nav .router-link-exact-active,
+.navbar-nav .nav-link:hover {
   color: #17a2b8;
 }
 
@@ -119,5 +168,9 @@ export default {
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.footer__navbar {
+  border-bottom: 1px solid #fff;
 }
 </style>
