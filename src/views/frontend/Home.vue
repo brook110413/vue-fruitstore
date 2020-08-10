@@ -38,7 +38,7 @@
       </nav>
     </div>
 
-    <main class="mb-5">
+    <main class="main mb-5">
       <router-view @updateCart="getCart()"></router-view>
     </main>
 
@@ -128,7 +128,7 @@ export default {
 </script>
 
 <style lang="scss">
-main {
+.main {
   margin-top: 58px;
   min-height: 100%;
 }

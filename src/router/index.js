@@ -29,6 +29,14 @@ const routes = [
         path: '/order',
         component: () => import('../views/frontend/Order.vue'),
       },
+      {
+        path: '/confirm',
+        component: () => import('../views/frontend/Confirm.vue'),
+      },
+      {
+        path: '/complete',
+        component: () => import('../views/frontend/Complete.vue'),
+      },
     ],
   },
   {

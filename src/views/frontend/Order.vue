@@ -45,7 +45,7 @@
             <!-- 姓名 -->
             <div class="form-group">
               <validation-provider rules="required" v-slot="{ errors, classes }">
-                <label for="username">收件人姓名</label>
+                <label for="username">收件人姓名 <span class="text-danger align-middle">*</span> </label>
                 <input
                   type="text"
                   class="form-control"
@@ -62,7 +62,7 @@
             <!-- email -->
             <div class="form-group">
               <validation-provider rules="required|email" v-slot="{ errors, classes }">
-                <label for="email">Email</label>
+                <label for="email">Email <span class="text-danger align-middle">*</span></label>
                 <input
                   type="email"
                   class="form-control"
@@ -79,7 +79,7 @@
             <!-- 電話 -->
             <div class="form-group">
               <validation-provider rules="required|min:8|numeric" v-slot="{ errors, classes }">
-                <label for="tel">電話</label>
+                <label for="tel">電話 <span class="text-danger align-middle">*</span></label>
                 <input
                   type="tel"
                   class="form-control"
@@ -96,7 +96,7 @@
             <!-- 地址 -->
             <div class="form-group">
               <validation-provider rules="required" v-slot="{ errors, classes }">
-                <label for="address">地址</label>
+                <label for="address">地址 <span class="text-danger align-middle">*</span></label>
                 <input
                   type="text"
                   class="form-control"
@@ -113,7 +113,7 @@
             <!-- 付款方式 -->
             <div class="form-group">
               <validation-provider rules="required" v-slot="{ errors, classes }">
-                <label for="payment">付款方式</label>
+                <label for="payment">付款方式 <span class="text-danger align-middle">*</span></label>
                 <select
                   name="付款方式"
                   id="payment"
@@ -124,24 +124,25 @@
                   <option value="" disabled>請選擇付款方式</option>
                   <option value="WebATM">WebATM</option>
                   <option value="ATM">ATM</option>
-                  <option value="Barcode">Barcode</option>
                   <option value="Credit">Credit</option>
                   <option value="ApplePay">ApplePay</option>
                   <option value="GooglePay">GooglePay</option>
+                  <option value="Barcode">街口支付</option>
+                  <option value="Barcode">Line Pay</option>
                 </select>
                 <span class="text-danger"> {{ errors[0] }} </span>
               </validation-provider>
             </div>
-            <!-- 留言 -->
+            <!-- 備註 -->
             <div class="form-group">
-              <label for="message">留言</label>
+              <label for="message">備註</label>
               <textarea
                 name="message"
                 id="message"
                 class="form-control"
                 cols="30"
                 rows="3"
-                placeholder="選填"
+                placeholder="有什麼想和我們說的嗎？"
                 v-model="form.message"
               ></textarea>
             </div>
@@ -173,16 +174,28 @@ export default {
         payment: '',
         message: '',
       },
+      coupon: {},
     };
+  },
+  created() {
+    this.$bus.$on('coupon', (para) => {
+      this.coupon = { ...para };
+      console.log(para);
+    });
   },
   methods: {
     createOrder() {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UUID}/ec/orders`;
-      this.$http.post(api, this.form)
-        .then((res) => {
-          console.log(res);
+      const order = { ...this.form };
+
+      if (this.coupon.enabled) {
+        order.coupon = this.coupon.code;
+      }
+      this.$http.post(api, order)
+        .then(() => {
           this.$bus.$emit('updateCart');
+          this.$router.push('/confirm');
           this.isLoading = false;
         });
     },

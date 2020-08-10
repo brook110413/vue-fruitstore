@@ -121,11 +121,11 @@
                   id="couponCode"
                   placeholder="請輸入優惠碼"
                   v-model="couponCode"
-                  @keyup.enter="useCoupon()">
+                  @keyup.enter="addCoupon()">
                   <button
                   type="button"
                   class="btn btn-outline-primary w-50"
-                  @click="useCoupon()">套用優惠碼</button>
+                  @click="addCoupon()">套用優惠碼</button>
                 </div>
               </div>
               <div class="d-flex justify-content-between align-items-center mb-3">
@@ -198,7 +198,7 @@ export default {
         this.$bus.$emit('updateCart');
       });
     },
-    useCoupon() {
+    addCoupon() {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UUID}/ec/coupon/search`;
       this.$http.post(api, {
@@ -206,6 +206,7 @@ export default {
       })
         .then((res) => {
           this.coupon = res.data.data;
+          this.$bus.$emit('coupon', this.coupon);
           this.isLoading = false;
         })
         .catch(() => {
