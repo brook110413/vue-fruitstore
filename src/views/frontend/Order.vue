@@ -124,11 +124,10 @@
                   <option value="" disabled>請選擇付款方式</option>
                   <option value="WebATM">WebATM</option>
                   <option value="ATM">ATM</option>
+                  <option value="ATM">Barcode</option>
                   <option value="Credit">Credit</option>
                   <option value="ApplePay">ApplePay</option>
                   <option value="GooglePay">GooglePay</option>
-                  <option value="Barcode">街口支付</option>
-                  <option value="Barcode">Line Pay</option>
                 </select>
                 <span class="text-danger"> {{ errors[0] }} </span>
               </validation-provider>
@@ -162,6 +161,8 @@
 </template>
 
 <script>
+import swal from 'sweetalert';
+
 export default {
   data() {
     return {
@@ -174,15 +175,9 @@ export default {
         payment: '',
         message: '',
       },
-      coupon: {},
     };
   },
-  created() {
-    this.$bus.$on('coupon', (para) => {
-      this.coupon = { ...para };
-      console.log(para);
-    });
-  },
+  props: ['coupon'],
   methods: {
     createOrder() {
       this.isLoading = true;
@@ -195,8 +190,17 @@ export default {
       this.$http.post(api, order)
         .then(() => {
           this.$bus.$emit('updateCart');
-          this.$router.push('/confirm');
+          this.$router.push('/checkout');
           this.isLoading = false;
+        })
+        .catch(() => {
+          swal({
+            title: '訂單失敗',
+            text: '系統忙碌中，請稍後再嘗試',
+            icon: 'error',
+            buttons: false,
+            timer: 1000,
+          });
         });
     },
   },

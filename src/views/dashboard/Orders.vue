@@ -22,7 +22,7 @@
             </ul>
           </td>
           <td class="text-center">{{ item.payment }}</td>
-          <td class="text-right">{{ item.amount | money }}</td>
+          <td class="text-right">{{ Math.round(item.amount) | money }}</td>
           <td>
             <div class="custom-control custom-switch">
               <input

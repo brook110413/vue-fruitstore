@@ -68,15 +68,25 @@
                             網路價 {{ item.price | money }} 元
                           </p>
                         </div>
-                        <button
+                        <!-- <button
                           type="button"
                           class="cartBtn btn rounded-circle"
                           @click.prevent="addToCart(item.id)"
+                          style="width:60px;height:60px"
                         >
                           <font-awesome-icon icon="shopping-cart" size="2x" />
-                        </button>
+                        </button> -->
                       </div>
                     </div>
+                    <div class="card-footer bg-white p-0 border-0">
+                        <button
+                          type="button"
+                          class="cartBtn btn btn-block"
+                          @click.prevent="addToCart(item.id)"
+                        >
+                        加入購物車
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -210,13 +220,8 @@ export default {
 }
 
 .cartBtn {
-  background-color: #ffffff;
-  color: #ffb74d;
-  border: 1px solid #ffb74d;
-  transition: 0.5s;
-  &:hover {
-    background-color: #ffb74d;
-    color: #ffffff;
-  }
+  background-color: #ffb74d;
+  color: #ffffff;
+  font-weight: bold;
 }
 </style>

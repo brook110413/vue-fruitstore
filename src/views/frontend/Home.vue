@@ -39,7 +39,7 @@
     </div>
 
     <main class="main mb-5">
-      <router-view @updateCart="getCart()"></router-view>
+      <router-view @updateCart="getCart()" @addCoupon="getCoupon" :coupon="coupon"></router-view>
     </main>
 
     <router-link
@@ -47,6 +47,7 @@
       class="cartLink
       nav-link rounded-circle d-flex flex-column align-items-center justify-content-center shadow"
       v-if="cart.length !== 0"
+      style="width:82px;height:82px"
     >
       <span class="cartNum badge badge-pill badge-danger">{{ cart.length }}</span>
       <font-awesome-icon icon="shopping-cart" size="2x" />
@@ -103,6 +104,7 @@ export default {
   data() {
     return {
       cart: [],
+      coupon: {},
       isLoading: false,
     };
   },
@@ -122,6 +124,9 @@ export default {
         this.cart = res.data.data;
         this.isLoading = false;
       });
+    },
+    getCoupon(para) {
+      this.coupon = para;
     },
   },
 };
@@ -172,5 +177,19 @@ export default {
 
 .footer__navbar {
   border-bottom: 1px solid #fff;
+}
+
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
 }
 </style>

@@ -30,8 +30,8 @@ const routes = [
         component: () => import('../views/frontend/Order.vue'),
       },
       {
-        path: '/confirm',
-        component: () => import('../views/frontend/Confirm.vue'),
+        path: '/checkout',
+        component: () => import('../views/frontend/Checkout.vue'),
       },
       {
         path: '/complete',
