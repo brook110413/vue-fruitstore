@@ -72,6 +72,7 @@
 import swal from 'sweetalert';
 
 export default {
+  name: 'Product',
   data() {
     return {
       product: {},

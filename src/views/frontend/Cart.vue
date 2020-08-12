@@ -192,6 +192,7 @@
 import swal from 'sweetalert';
 
 export default {
+  name: 'Cart',
   data() {
     return {
       cart: [],

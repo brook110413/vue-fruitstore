@@ -164,6 +164,7 @@
 import swal from 'sweetalert';
 
 export default {
+  name: 'Order',
   data() {
     return {
       isLoading: false,

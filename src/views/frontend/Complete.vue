@@ -18,7 +18,12 @@
 
 <script>
 export default {
+  name: 'Complete',
+  data() {
+    return {
 
+    };
+  },
 };
 </script>
 

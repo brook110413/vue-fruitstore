@@ -114,6 +114,7 @@
 
 <script>
 export default {
+  name: 'Checkout',
   data() {
     return {
       orders: [],

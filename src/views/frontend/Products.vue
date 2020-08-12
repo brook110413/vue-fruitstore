@@ -13,7 +13,8 @@
             <a
               class="list-group-item list-group-item-action active"
               data-toggle="list"
-              href="#list-all"
+              href="#list-filter"
+              @click="category = 'all'"
               >所有商品</a
             >
             <a
@@ -41,57 +42,12 @@
         </div>
         <div class="col-lg-10 col-md-9">
           <div class="tab-content">
-            <div class="tab-pane show active" id="list-all">
-              <div class="row">
-                <div class="col-lg-4 col-md-6 mb-5" v-for="item in products" :key="item.id" v-cloak>
-                  <div class="card">
-                    <router-link :to="`/product/${item.id}`">
-                      <div
-                        class="bg-cover position-relative"
-                        style="height: 200px"
-                        :style="{ backgroundImage: `url(${item.imageUrl[0]})` }"
-                      >
-                        <span class="more_info">看更多內容</span>
-                      </div>
-                    </router-link>
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <router-link :to="`/product/${item.id}`">
-                          <h5 class="card-title text-primary font-weight-bold">{{ item.title }}</h5>
-                        </router-link>
-                        <span class="badge badge-secondary align-self-start">
-                          {{ item.category }}
-                        </span>
-                      </div>
-                      <div class="d-flex justify-content-between">
-                        <div>
-                          <del>原價 {{ item.origin_price | money }} 元</del>
-                          <p class="h4 text-success font-weight-bold">
-                            網路價 {{ item.price | money }} 元
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer bg-white p-0 border-0">
-                      <button
-                        type="button"
-                        class="cartBtn btn btn-block"
-                        @click.prevent="addToCart(item.id)"
-                      >
-                        加入購物車
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane" id="list-filter">
+            <div class="tab-pane show active" id="list-filter">
               <div class="row">
                 <div
                   class="col-lg-4 col-md-6 mb-5"
                   v-for="item in filterProducts"
                   :key="item.id"
-                  v-cloak
                 >
                   <div class="card">
                     <router-link :to="`/product/${item.id}`">
@@ -145,12 +101,13 @@
 import swal from 'sweetalert';
 
 export default {
+  name: 'Products',
   data() {
     return {
       products: [],
       pagination: {},
       isLoading: false,
-      category: '',
+      category: 'all',
     };
   },
   created() {
@@ -200,6 +157,9 @@ export default {
   },
   computed: {
     filterProducts() {
+      if (this.category === 'all') {
+        return this.products;
+      }
       return this.products.filter((item) => item.category === this.category);
     },
   },
