@@ -38,7 +38,7 @@
                     <button
                       class="btn btn-outline-primary"
                       @click="cartNum--"
-                      :disabled="cartNum === 1"
+                      :disabled="cartNum <= 1"
                     >
                       -
                     </button>

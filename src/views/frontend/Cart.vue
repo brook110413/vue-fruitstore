@@ -83,7 +83,7 @@
                             item.quantity--;
                             quantityUpdate(item.product.id, item.quantity);
                           "
-                          :disabled="item.quantity === 1"
+                          :disabled="item.quantity <= 1"
                         >
                           -
                         </button>
