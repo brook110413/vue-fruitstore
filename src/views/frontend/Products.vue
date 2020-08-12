@@ -47,10 +47,12 @@
                   <div class="card">
                     <router-link :to="`/product/${item.id}`">
                       <div
-                        class="bg-cover"
+                        class="bg-cover position-relative"
                         style="height: 200px"
                         :style="{ backgroundImage: `url(${item.imageUrl[0]})` }"
-                      ></div>
+                      >
+                        <span class="more_info">看更多內容</span>
+                      </div>
                     </router-link>
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center">
@@ -86,7 +88,7 @@
             <div class="tab-pane" id="list-filter">
               <div class="row">
                 <div
-                  class="col-lg-4 col-6 mb-5"
+                  class="col-lg-4 col-md-6 mb-5"
                   v-for="item in filterProducts"
                   :key="item.id"
                   v-cloak
@@ -94,10 +96,12 @@
                   <div class="card">
                     <router-link :to="`/product/${item.id}`">
                       <div
-                        class="bg-cover"
+                        class="bg-cover position-relative"
                         style="height: 200px"
                         :style="{ backgroundImage: `url(${item.imageUrl[0]})` }"
-                      ></div>
+                      >
+                        <span class="more_info">看更多內容</span>
+                      </div>
                     </router-link>
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center">
@@ -224,6 +228,9 @@ export default {
   transition: all 0.5s;
   &:hover {
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    .more_info {
+      opacity: 1;
+    }
   }
 }
 
@@ -231,5 +238,20 @@ export default {
   background-color: #ffb74d;
   color: #ffffff;
   font-weight: bold;
+}
+
+.more_info {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #ffb74d;
+  color: #ffffff;
+  padding: 1rem 1rem 0.5rem 1.25rem;
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+  opacity: 0;
+  transition: .3s;
+  @media (max-width: 768px) {
+    opacity: 1;
+  }
 }
 </style>
