@@ -3,47 +3,47 @@
     <loading :active.sync="isLoading"></loading>
     <div class="container" v-if="products[0]">
       <div class="row">
-        <div class="col-2">
-          <div class="sticky-top" style="top:72px">
-            <div class="list-group mt-0" id="list-tab" role="tablist">
-              <a
-                class="list-group-item list-group-item-action active"
-                data-toggle="list"
-                href="#list-all"
-                >所有商品</a
-              >
-              <a
-                class="list-group-item list-group-item-action"
-                data-toggle="list"
-                href="#list-filter"
-                @click="category = '水果'"
-                >現摘水果</a
-              >
-              <a
-                class="list-group-item list-group-item-action"
-                data-toggle="list"
-                href="#list-filter"
-                @click="category = '蔬菜'"
-                >當季蔬菜</a
-              >
-              <a
-                class="list-group-item list-group-item-action"
-                data-toggle="list"
-                href="#list-filter"
-                @click="category = '濃縮果汁'"
-                >濃縮果汁</a
-              >
-            </div>
+        <div class="col-lg-2 col-md-3">
+          <div
+            class="list-group flex-row flex-md-column mt-0 mb-3
+          sticky-top"
+            id="list-tab"
+            role="tablist"
+          >
+            <a
+              class="list-group-item list-group-item-action active"
+              data-toggle="list"
+              href="#list-all"
+              >所有商品</a
+            >
+            <a
+              class="list-group-item list-group-item-action"
+              data-toggle="list"
+              href="#list-filter"
+              @click="category = '水果'"
+              >現摘水果</a
+            >
+            <a
+              class="list-group-item list-group-item-action"
+              data-toggle="list"
+              href="#list-filter"
+              @click="category = '蔬菜'"
+              >當季蔬菜</a
+            >
+            <a
+              class="list-group-item list-group-item-action"
+              data-toggle="list"
+              href="#list-filter"
+              @click="category = '濃縮果汁'"
+              >濃縮果汁</a
+            >
           </div>
         </div>
-        <div class="col-10">
+        <div class="col-lg-10 col-md-9">
           <div class="tab-content">
-            <div
-              class="tab-pane show active"
-              id="list-all"
-            >
+            <div class="tab-pane show active" id="list-all">
               <div class="row">
-                <div class="col-4 mb-5" v-for="item in products" :key="item.id" v-cloak>
+                <div class="col-lg-4 col-md-6 mb-5" v-for="item in products" :key="item.id" v-cloak>
                   <div class="card">
                     <router-link :to="`/product/${item.id}`">
                       <div
@@ -63,40 +63,34 @@
                       </div>
                       <div class="d-flex justify-content-between">
                         <div>
-                          <del class="h6">原價 {{ item.origin_price | money }} 元</del>
+                          <del>原價 {{ item.origin_price | money }} 元</del>
                           <p class="h4 text-success font-weight-bold">
                             網路價 {{ item.price | money }} 元
                           </p>
                         </div>
-                        <!-- <button
-                          type="button"
-                          class="cartBtn btn rounded-circle"
-                          @click.prevent="addToCart(item.id)"
-                          style="width:60px;height:60px"
-                        >
-                          <font-awesome-icon icon="shopping-cart" size="2x" />
-                        </button> -->
                       </div>
                     </div>
                     <div class="card-footer bg-white p-0 border-0">
-                        <button
-                          type="button"
-                          class="cartBtn btn btn-block"
-                          @click.prevent="addToCart(item.id)"
-                        >
+                      <button
+                        type="button"
+                        class="cartBtn btn btn-block"
+                        @click.prevent="addToCart(item.id)"
+                      >
                         加入購物車
-                        </button>
-                      </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="tab-pane"
-              id="list-filter"
-            >
+            <div class="tab-pane" id="list-filter">
               <div class="row">
-                <div class="col-4 mt-3 mb-5" v-for="item in filterProducts" :key="item.id" v-cloak>
+                <div
+                  class="col-lg-4 col-6 mb-5"
+                  v-for="item in filterProducts"
+                  :key="item.id"
+                  v-cloak
+                >
                   <div class="card">
                     <router-link :to="`/product/${item.id}`">
                       <div
@@ -121,14 +115,16 @@
                             網路價 {{ item.price | money }} 元
                           </p>
                         </div>
-                        <button
-                          type="button"
-                          class="cartBtn btn rounded-circle"
-                          @click.prevent="addToCart(item.id)"
-                        >
-                          <font-awesome-icon icon="shopping-cart" size="2x" />
-                        </button>
                       </div>
+                    </div>
+                    <div class="card-footer bg-white p-0 border-0">
+                      <button
+                        type="button"
+                        class="cartBtn btn btn-block"
+                        @click.prevent="addToCart(item.id)"
+                      >
+                        加入購物車
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -209,6 +205,18 @@ export default {
 <style lang="scss" scoped>
 .list-group {
   margin-top: 15px;
+  top: 72px;
+}
+
+.list-group-item {
+  @media (max-width: 576px) {
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    font-size: 12px;
+  }
+  @media (max-width: 375px) {
+    font-size: 11px;
+  }
 }
 
 .card {

@@ -4,9 +4,11 @@
     <div class="container">
       <nav class="navbar navbar-expand-sm fixed-top shadow">
         <div class="container">
-          <router-link to="/" class="navbar-brand">小農工坊</router-link>
+          <router-link to="/" class="navbar-brand">
+            <h1 class="brand h5 mb-0">Nutrition</h1>
+          </router-link>
           <button
-            class="navbar-toggler"
+            class="navbar-toggler "
             type="button"
             data-toggle="collapse"
             data-target="#navbarNavDropdown"
@@ -14,7 +16,9 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon">
+              <font-awesome-icon icon="bars" style="width:30px;height:30px" />
+            </span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
@@ -26,11 +30,6 @@
               </li>
               <li class="nav-item">
                 <router-link to="/cart" class="nav-link">購物車</router-link>
-              </li>
-            </ul>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <router-link to="/admin/products" class="nav-link">後台管理</router-link>
               </li>
             </ul>
           </div>
@@ -57,7 +56,7 @@
     <div class="footer bg-primary py-3 text-white">
       <div class="container">
         <div class="footer__navbar d-flex justify-content-between align-items-center mb-3 pb-3">
-          <router-link to="/" class="navbar-brand text-white p-0">小農工坊</router-link>
+          <router-link to="/" class="navbar-brand brand text-white p-0">Nutrition</router-link>
           <ul class="list-unstyled d-flex mb-0">
             <li class="mr-4">
               <a href="#">
@@ -84,14 +83,18 @@
           <div class="d-flex flex-column">
             <a href="tel:0800-987-654" class="text-white mb-3 d-flex align-items-center">
               <font-awesome-icon icon="phone-alt" size="2x" class="mr-3" />
-              <span class="h3 mb-0">0800-987-654</span>
+              <span class="h4 mb-0">0800-987-654</span>
             </a>
             <a href="mailto:fruitstroe@business.com" class="text-white d-flex align-items-center">
               <font-awesome-icon icon="envelope" size="2x" class="mr-3" />
-              <span class="h3 mb-0">fruitstroe@business.com</span>
+              <span class="h4 mb-0">nutrition@business.com</span>
             </a>
           </div>
-          <p class="text-white mb-0 align-self-end">© 2020 LOGO All Rights Reserved.</p>
+          <router-link
+          to="/admin/products"
+          class="text-white mb-0 align-self-end d-none d-md-inline-block">
+            © 2020 LOGO All Rights Reserved.
+          </router-link>
         </div>
       </div>
     </div>
@@ -135,15 +138,18 @@ export default {
 <style lang="scss">
 .main {
   margin-top: 58px;
-  min-height: 100%;
 }
 
 .navbar {
-  background: rgba(#ffffff, .87);
+  background: rgba(#ffffff, 0.87);
 }
 
 .navbar-brand {
   color: #000000;
+}
+
+.brand {
+  font-family: Monoton;
 }
 
 .navbar-nav .nav-link {
@@ -154,6 +160,11 @@ export default {
 .navbar-nav .router-link-exact-active,
 .navbar-nav .nav-link:hover {
   color: #17a2b8;
+}
+
+.navbar-toggler {
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .cartLink {
@@ -179,17 +190,10 @@ export default {
   border-bottom: 1px solid #fff;
 }
 
-html, body {
-  height: 100%;
-}
-body {
-  display: flex;
-  flex-direction: column;
-}
 .main {
-  flex: 1 0 auto;
+  min-height: calc(100vh - 287px);
 }
 .footer {
-  flex-shrink: 0;
+  height: 181px;
 }
 </style>

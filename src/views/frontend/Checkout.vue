@@ -3,7 +3,7 @@
     <loading :active.sync="isLoading"></loading>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-8 mb-4">
+        <div class="col-lg-8 mb-4">
           <ul class="list-unstyled d-flex justify-content-around mb-1">
             <li class="d-flex flex-column align-items-center">
               <span
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="row justify-content-center" v-if="order.products">
-        <div class="col-6">
+        <div class="col-lg-6">
           <table class="table mb-5">
             <thead>
               <tr>
@@ -58,7 +58,9 @@
             <tbody>
               <tr v-for="(item, key) in order.products" :key="key">
                 <td class="align-middle" scope="row">
-                  <img :src="item.product.imageUrl[0]" class="img-fluid mr-3" width="100px" />
+                  <img
+                  :src="item.product.imageUrl[0]"
+                  class="img-fluid mr-3 d-none d-md-inline-block" width="100px" />
                   {{ item.product.title }}
                 </td>
                 <td class="align-middle">{{ item.quantity }} {{ item.product.unit }}</td>

@@ -17,5 +17,4 @@ export default {
 <style lang="scss">
 @import "./assets/scss/all";
 @import "~aos/dist/aos.css";
-// @import '~swiper/swiper-bundle.css';
 </style>

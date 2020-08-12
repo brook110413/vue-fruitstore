@@ -1,5 +1,4 @@
 import Vue from 'vue';
-// import VueAwesomeSwiper from 'vue-awesome-swiper';
 import AOS from 'aos';
 import Vue2Editor from 'vue2-editor';
 import {
@@ -25,8 +24,6 @@ import './bus';
 Vue.config.productionTip = false;
 
 // 插件
-// swiper
-// Vue.use(VueAwesomeSwiper);
 // aos 動畫
 AOS.init();
 // 文字編輯器

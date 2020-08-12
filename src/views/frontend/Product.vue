@@ -10,12 +10,12 @@
         </ol>
       </nav>
       <div class="row mb-5">
-        <div class="col">
-          <div>
+        <div class="col-lg-6">
+          <div class="d-flex justify-content-center">
             <img :src="product.imageUrl[0]" alt="" class="img-fluid rounded" />
           </div>
         </div>
-        <div class="col d-flex justify-content-center align-items-center">
+        <div class="col-lg-6 d-flex justify-content-center align-items-center">
           <div class="card border-0">
             <div class="card-body">
               <h2 class="card-title text-primary font-weight-bold">{{ product.title }}</h2>
@@ -24,7 +24,7 @@
                 {{ product.content }}
               </p>
               <div class="d-flex flex-column align-items-end mb-3">
-                <del class="mb-0 h6 mb-2">
+                <del class="mb-0 mb-2">
                   原價 {{ product.origin_price | money }} / {{ product.unit }}
                 </del>
                 <p class="mb-0 text-success h4 font-weight-bold">

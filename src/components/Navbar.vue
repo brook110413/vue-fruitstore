@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <router-link to="/" class="navbar-brand col-md-3 col-lg-2 mr-0 px-3">小農工坊</router-link>
+    <router-link to="/" class="brand navbar-brand col-md-3 col-lg-2 mr-0 px-3">Nutrition</router-link>
     <button
       class="navbar-toggler position-absolute d-md-none collapsed"
       type="button"
@@ -35,9 +35,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  /*
- * Navbar
- */
+.brand {
+  font-family: Monoton;
+}
 
 .navbar-brand {
   padding-top: .75rem;

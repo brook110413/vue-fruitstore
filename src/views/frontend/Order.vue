@@ -3,7 +3,7 @@
     <loading :active.sync="isLoading"></loading>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-8 mb-4">
+        <div class="col-lg-8 mb-4">
           <ul class="list-unstyled d-flex justify-content-around mb-1">
             <li class="d-flex flex-column align-items-center">
               <span
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <validation-observer v-slot="{ invalid }" tag="div" class="col-6">
+        <validation-observer v-slot="{ invalid }" tag="div" class="col-lg-6">
           <form @submit.prevent="createOrder">
             <!-- 姓名 -->
             <div class="form-group">
