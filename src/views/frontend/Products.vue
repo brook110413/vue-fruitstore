@@ -50,15 +50,17 @@
                   :key="item.id"
                 >
                   <div class="card">
-                    <router-link :to="`/product/${item.id}`">
+                    <div class="product__img__wrap">
+                      <router-link :to="`/product/${item.id}`">
                       <div
-                        class="bg-cover position-relative"
+                        class="product__img bg-cover position-relative"
                         style="height: 200px"
                         :style="{ backgroundImage: `url(${item.imageUrl[0]})` }"
                       >
                         <span class="more_info">看更多內容</span>
                       </div>
                     </router-link>
+                    </div>
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center">
                         <router-link :to="`/product/${item.id}`">
@@ -194,6 +196,17 @@ export default {
   }
 }
 
+.product__img__wrap {
+  overflow: hidden;
+}
+
+.product__img {
+  transition: all .3s ease-in-out;
+}
+.product__img:hover {
+  transform: scale(1.04);
+}
+
 .cartBtn {
   background-color: #ffb74d;
   color: #ffffff;
@@ -206,7 +219,7 @@ export default {
   right: 0;
   background: #ffb74d;
   color: #ffffff;
-  padding: 1rem 1rem 0.5rem 1.25rem;
+  padding: 1rem 1.25rem 0.75rem 1.25rem;
   clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
   opacity: 0;
   transition: .3s;

@@ -68,7 +68,7 @@
                   {{ (item.product.price * item.quantity) | money }}
                 </td>
               </tr>
-              <tr>
+              <tr v-if="order.coupon">
                 <td></td>
                 <td>優惠碼</td>
                 <td class="text-right">
@@ -147,6 +147,7 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UUID}/ec/orders/${this.order.id}/paying`;
       this.$http.post(api).then(() => {
         this.$router.push('/complete');
+        this.$emit('removeCoupon');
         this.isLoading = false;
       });
     },

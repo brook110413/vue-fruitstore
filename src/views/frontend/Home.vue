@@ -38,7 +38,11 @@
     </div>
 
     <main class="main mb-5">
-      <router-view @updateCart="getCart()" @addCoupon="getCoupon" :coupon="coupon"></router-view>
+      <router-view
+      @updateCart="getCart()"
+      @addCoupon="getCoupon"
+      @removeCoupon="removeCoupon()"
+      :coupon="coupon"></router-view>
     </main>
 
     <router-link
@@ -130,6 +134,9 @@ export default {
     },
     getCoupon(para) {
       this.coupon = para;
+    },
+    removeCoupon() {
+      this.coupon = {};
     },
   },
 };

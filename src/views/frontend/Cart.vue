@@ -249,8 +249,8 @@ export default {
         })
         .then((res) => {
           this.coupon = res.data.data;
-          this.isLoading = false;
           this.$emit('addCoupon', this.coupon);
+          this.isLoading = false;
         })
         .catch(() => {
           swal({
