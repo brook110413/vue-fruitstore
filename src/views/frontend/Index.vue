@@ -100,7 +100,7 @@ export default {
   background: rgba(101, 101, 101, 0.6);
   color: #ffffff;
   opacity: 0;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 .productImg .mask:hover {

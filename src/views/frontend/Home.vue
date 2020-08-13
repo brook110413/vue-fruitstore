@@ -48,9 +48,10 @@
     <router-link
       to="/cart"
       class="cartLink
-      nav-link rounded-circle d-flex flex-column align-items-center justify-content-center shadow"
+      nav-link rounded-circle d-flex flex-column
+      align-items-center justify-content-center shadow px-2"
       v-if="cart.length !== 0"
-      style="width:82px;height:82px"
+      style="width:80px;height:80px"
     >
       <span class="cartNum badge badge-pill badge-danger">{{ cart.length }}</span>
       <font-awesome-icon icon="shopping-cart" size="2x" />

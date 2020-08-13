@@ -163,6 +163,7 @@
                       套用優惠碼
                     </button>
                   </div>
+                  <p class="mb-2" v-if="!coupon.enabled">優惠碼輸入 coupon 試試</p>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4 class="mb-0 font-weight-bold">總計</h4>
@@ -203,6 +204,7 @@ export default {
   },
   created() {
     this.getCart();
+    this.$emit('addCoupon', this.coupon);
   },
   methods: {
     getCart() {
