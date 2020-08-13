@@ -2,6 +2,19 @@
   <div class="products pt-3">
     <loading :active.sync="isLoading"></loading>
     <div class="container" v-if="products[0]">
+      <div class="form-group d-flex justify-content-end">
+        <select
+        name="sort"
+        id="sort"
+        v-model="sort"
+        class="form-control"
+        style="width:auto"
+        @change="sortProducts()">
+          <option value="" disabled>商品排序</option>
+          <option value="lowToHigh">價格由低至高</option>
+          <option value="highToLow">價格由高至低</option>
+        </select>
+      </div>
       <div class="row">
         <div class="col-lg-2 col-md-3">
           <div
@@ -110,6 +123,7 @@ export default {
       pagination: {},
       isLoading: false,
       category: 'all',
+      sort: '',
     };
   },
   created() {
@@ -156,6 +170,17 @@ export default {
           this.isLoading = false;
         });
     },
+    sortProducts() {
+      this.filterProducts.sort((a, b) => {
+        if (this.sort === 'lowToHigh') {
+          return a.price - b.price;
+        }
+        if (this.sort === 'highToLow') {
+          return b.price - a.price;
+        }
+        return this.filterProducts;
+      });
+    },
   },
   computed: {
     filterProducts() {
@@ -179,9 +204,8 @@ export default {
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
     font-size: 12px;
-  }
-  @media (max-width: 375px) {
-    font-size: 11px;
+    padding: 8px;
+    text-align: center;
   }
 }
 
