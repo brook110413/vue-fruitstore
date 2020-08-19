@@ -49,7 +49,7 @@
                 class="btn btn-outline-primary btn-sm mr-2"
                 @click="getProductTemp(item);openEditModal()"
               >
-                <font-awesome-icon icon="edit" />
+                <i class="fas fa-edit"></i>
               </button>
               <button
                 type="button"
@@ -58,7 +58,7 @@
                 data-target="#delProductModal"
                 @click="getProductTemp(item)"
               >
-                <font-awesome-icon icon="trash-alt" />
+                <i class="fas fa-trash-alt"></i>
               </button>
             </td>
           </tr>
@@ -86,6 +86,7 @@ import productModal from '@/components/ProductModal.vue';
 import delProductModal from '@/components/DelProductModal.vue';
 
 export default {
+  name: 'Products',
   data() {
     return {
       products: [],

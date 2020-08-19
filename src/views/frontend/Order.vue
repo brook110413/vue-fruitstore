@@ -124,7 +124,7 @@
                   <option value="" disabled>請選擇付款方式</option>
                   <option value="WebATM">WebATM</option>
                   <option value="ATM">ATM</option>
-                  <option value="ATM">Barcode</option>
+                  <option value="Barcode">Barcode</option>
                   <option value="Credit">Credit</option>
                   <option value="ApplePay">ApplePay</option>
                   <option value="GooglePay">GooglePay</option>
@@ -147,7 +147,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-center">
               <router-link to="/cart" class="text-dark">
-                <font-awesome-icon icon="angle-left" class="mr-2" />回購物車</router-link
+                <i class="fas fa-angle-left mr-2"></i>回購物車</router-link
               >
               <button type="submit" class="btn btn-primary" :disabled="invalid">
                 提交訂單

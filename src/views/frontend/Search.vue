@@ -1,9 +1,14 @@
 <template>
-  <div class="products pt-4">
+  <div class="serach pt-4">
     <loading :active.sync="isLoading"></loading>
-    <div class="container" v-if="products[0]">
-      <div class="d-sm-flex justify-content-sm-end">
-        <div class="form-group">
+    <div class="container">
+      <div
+        class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center mb-3"
+      >
+        <h2 class="searchTitle h6 mb-3 mb-sm-0">
+          共找到 {{ filterProducts.length }} 項 「{{ keyword }}」 相關的產品
+        </h2>
+        <div class="form-group mb-0">
           <select
             name="sort"
             id="sort"
@@ -35,12 +40,7 @@
                   >
                     <i class="fas fa-heart fa-lg text-white"></i>
                   </a>
-                  <a
-                    href="#"
-                    class="btn favorite"
-                    @click.prevent="addfavorite(item)"
-                    v-else
-                  >
+                  <a href="#" class="btn favorite" @click.prevent="addfavorite(item)" v-else>
                     <i class="far fa-heart fa-lg text-white"></i>
                   </a>
                   <span class="more_info">看更多內容</span>
@@ -83,23 +83,23 @@
 import swal from 'sweetalert';
 
 export default {
-  name: 'Products',
+  name: 'Search',
   data() {
     return {
       products: [],
       pagination: {},
       isLoading: false,
-      sort: '',
       favoriteList: [],
       favoriteId: [],
+      sort: '',
     };
   },
+  props: ['keyword'],
   created() {
     this.getProducts();
     this.favoriteList = JSON.parse(localStorage.getItem('favoriteList')) || [];
     this.favoriteId = JSON.parse(localStorage.getItem('favoriteId')) || [];
   },
-  props: ['category'],
   methods: {
     getProducts(page = 1) {
       this.isLoading = true;
@@ -108,48 +108,6 @@ export default {
         this.products = res.data.data;
         this.pagination = res.data.meta.pagination;
         this.isLoading = false;
-      });
-    },
-    addToCart(id, quantity = 1) {
-      this.isLoading = true;
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UUID}/ec/shopping`;
-      const cart = {
-        product: id,
-        quantity,
-      };
-      this.$http
-        .post(api, cart)
-        .then(() => {
-          swal({
-            title: '產品添加成功',
-            text: '請至購物車結帳',
-            icon: 'success',
-            buttons: false,
-            timer: 1000,
-          });
-          this.$emit('updateCart');
-          this.isLoading = false;
-        })
-        .catch(() => {
-          swal({
-            title: '商品重複',
-            text: '商品已放入購物車當中',
-            icon: 'error',
-            buttons: false,
-            timer: 1000,
-          });
-          this.isLoading = false;
-        });
-    },
-    sortProducts() {
-      this.filterProducts.sort((a, b) => {
-        if (this.sort === 'lowToHigh') {
-          return a.price - b.price;
-        }
-        if (this.sort === 'highToLow') {
-          return b.price - a.price;
-        }
-        return this.filterProducts;
       });
     },
     addfavorite(item) {
@@ -188,22 +146,64 @@ export default {
         timer: 1000,
       });
     },
+    sortProducts() {
+      this.filterProducts.sort((a, b) => {
+        if (this.sort === 'lowToHigh') {
+          return a.price - b.price;
+        }
+        if (this.sort === 'highToLow') {
+          return b.price - a.price;
+        }
+        return this.filterProducts;
+      });
+    },
+    addToCart(id, quantity = 1) {
+      this.isLoading = true;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UUID}/ec/shopping`;
+      const cart = {
+        product: id,
+        quantity,
+      };
+      this.$http
+        .post(api, cart)
+        .then(() => {
+          swal({
+            title: '產品添加成功',
+            text: '請至購物車結帳',
+            icon: 'success',
+            buttons: false,
+            timer: 1000,
+          });
+          this.$emit('updateCart');
+          this.isLoading = false;
+        })
+        .catch(() => {
+          swal({
+            title: '商品重複',
+            text: '商品已放入購物車當中',
+            icon: 'error',
+            buttons: false,
+            timer: 1000,
+          });
+          this.isLoading = false;
+        });
+    },
   },
   computed: {
     filterProducts() {
-      if (this.category === '所有商品') {
-        return this.products;
-      }
-      return this.products.filter((item) => item.category === this.category);
+      return this.products.filter(
+        (item) => item.title.match(this.keyword) || item.category.match(this.keyword),
+      );
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.list-group {
-  margin-top: 15px;
-  top: 72px;
+.searchTitle {
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
 }
 
 .card {

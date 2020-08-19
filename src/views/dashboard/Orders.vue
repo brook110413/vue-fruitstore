@@ -49,6 +49,7 @@
 import pagination from '@/components/Pagination.vue';
 
 export default {
+  name: 'Orders',
   data() {
     return {
       orders: [],

@@ -36,7 +36,7 @@
             data-toggle="modal"
             data-target="#couponModal"
             @click="submit = 'edit';getCouponTemp(item)">
-              <font-awesome-icon icon="edit" />
+              <i class="fas fa-edit"></i>
             </button>
             <button
               type="button"
@@ -45,7 +45,7 @@
               data-target="#delCouponModal"
               @click="getCouponTemp(item)"
             >
-              <font-awesome-icon icon="trash-alt" />
+              <i class="fas fa-trash-alt"></i>
             </button>
           </td>
         </tr>
@@ -192,6 +192,7 @@ import $ from 'jquery';
 import pagination from '@/components/Pagination.vue';
 
 export default {
+  name: 'Coupons',
   data() {
     return {
       coupons: [],

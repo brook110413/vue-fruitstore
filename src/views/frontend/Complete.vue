@@ -1,14 +1,22 @@
 <template>
-  <div class="complete">
+  <div class="complete pt-4">
     <div class="container">
       <div class="row">
         <div class="col-6 d-flex align-items-center">
           <div>
             <h2 class="completeTitle mb-3 h6">付款完成，感謝您的支持</h2>
-            <router-link to="/products" class="btn btn-primary ">繼續購物</router-link>
+            <a
+              href="#"
+              @click.prevent="
+                category = '所有商品';
+                toProducts();
+              "
+              class="btn btn-primary "
+              >繼續購物</a
+            >
           </div>
         </div>
-        <div class="col">
+        <div class="col-6">
           <div class="completeBanner bg-cover"></div>
         </div>
       </div>
@@ -21,8 +29,14 @@ export default {
   name: 'Complete',
   data() {
     return {
-
+      category: '',
     };
+  },
+  methods: {
+    toProducts() {
+      this.$emit('fliterProduct', this.category);
+      this.$router.push(`/products/${this.category}`);
+    },
   },
 };
 </script>
@@ -30,8 +44,10 @@ export default {
 <style lang="scss" scoped>
 .completeBanner {
   background-image: url(../../../public/images/completeBanner.jpg);
-  height: 90vh;
-  margin-bottom: -48px;
+  height: 100vh;
+  width: 100vh;
+  margin-bottom: -16px;
+  margin-right: -15px;
 }
 
 .completeTitle {

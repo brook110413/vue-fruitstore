@@ -9,25 +9,25 @@
       <ul class="nav flex-column">
         <li class="nav-item">
           <router-link to="/admin/products" class="nav-link font-weight-bold">
-            <font-awesome-icon icon="box-open" />
+            <i class="fas fa-box-open"></i>
             產品列表
           </router-link>
         </li>
         <li class="nav-item">
           <router-link to="/admin/orders" class="nav-link font-weight-bold">
-            <font-awesome-icon icon="list-alt" />
+            <i class="fas fa-list-alt"></i>
             訂單列表
           </router-link>
         </li>
         <li class="nav-item">
           <router-link to="/admin/coupons" class="nav-link font-weight-bold">
-            <font-awesome-icon icon="ticket-alt" />
+            <i class="fas fa-ticket-alt"></i>
             優惠券列表
           </router-link>
         </li>
         <li class="nav-item">
           <router-link to="/admin/storages" class="nav-link font-weight-bold">
-            <font-awesome-icon icon="images" />
+            <i class="fas fa-images"></i>
             產品圖片管理
           </router-link>
         </li>
@@ -75,7 +75,7 @@
 }
 
 .sidebar .router-link-exact-active, .sidebar .nav-link:hover {
-  color: #17a2b8;
+  color: #00796b;
   padding-left: 2rem;
 }
 

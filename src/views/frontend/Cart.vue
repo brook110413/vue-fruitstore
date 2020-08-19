@@ -5,8 +5,15 @@
       <div class="d-flex justify-content-center" v-if="!cart[0]">
         <div>
           <h2 class="cart__title mb-3 h5">購物車內無商品，請返回商城選購</h2>
-          <router-link to="/products" class="text-dark">
-            <font-awesome-icon icon="angle-left" class="mr-2" />回商城</router-link
+          <a
+            href="#"
+            @click.prevent="
+              category = '所有商品';
+              toProducts();
+            "
+            class="text-dark"
+          >
+            <i class="fas fa-angle-left mr-2"></i>回商城</a
           >
         </div>
       </div>
@@ -70,8 +77,10 @@
                 <tr v-for="item in cart" :key="item.product.id">
                   <td class="align-middle" scope="row">
                     <img
-                    :src="item.product.imageUrl[0]"
-                    class="img-fluid mr-3 d-none d-md-inline-block" width="100px" />
+                      :src="item.product.imageUrl[0]"
+                      class="img-fluid mr-3 d-none d-md-inline-block"
+                      width="100px"
+                    />
                     {{ item.product.title }}
                   </td>
                   <td class="align-middle">
@@ -120,7 +129,7 @@
                       class="btn btn-sm"
                       @click="delOneCartItem(item.product.id)"
                     >
-                      <font-awesome-icon icon="times" />
+                      <i class="fas fa-times"></i>
                     </button>
                   </td>
                 </tr>
@@ -176,7 +185,7 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                   <router-link to="/products" class="text-dark">
-                    <font-awesome-icon icon="angle-left" class="mr-2" />繼續選購</router-link
+                    <i class="fas fa-angle-left mr-2"></i>繼續選購</router-link
                   >
                   <router-link to="/order" class="btn btn-primary">前往結帳</router-link>
                 </div>
@@ -200,6 +209,7 @@ export default {
       isLoading: false,
       coupon: {},
       couponCode: '',
+      category: '',
     };
   },
   created() {
@@ -265,6 +275,10 @@ export default {
           this.isLoading = false;
         });
     },
+    toProducts() {
+      this.$emit('fliterProduct', this.category);
+      this.$router.push(`/products/${this.category}`);
+    },
   },
   computed: {
     updateCartTotalPrice() {
@@ -275,7 +289,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.cart__title{
+.cart__title {
   @media (min-width: 768px) {
     font-size: 32px;
   }

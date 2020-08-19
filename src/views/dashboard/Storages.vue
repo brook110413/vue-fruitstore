@@ -21,7 +21,7 @@
               data-target="#delStorageModal"
               @click="getStorageTemp(item)"
             >
-              <font-awesome-icon icon="trash-alt" />
+              <i class="fas fa-trash-alt"></i>
             </button>
           </td>
         </tr>
@@ -68,6 +68,7 @@ import $ from 'jquery';
 import pagination from '@/components/Pagination.vue';
 
 export default {
+  name: 'Storages',
   data() {
     return {
       storages: [],
