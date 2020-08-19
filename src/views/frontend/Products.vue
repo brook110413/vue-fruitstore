@@ -109,11 +109,7 @@
               {{ item.price | money }}
             </td>
             <td class="align-middle text-center">
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click.prevent="addToCart(item.id)"
-              >
+              <button type="button" class="btn btn-primary" @click.prevent="addToCart(item.id)">
                 <i class="fas fa-cart-plus mr-1"></i>加入購物車
               </button>
             </td>
