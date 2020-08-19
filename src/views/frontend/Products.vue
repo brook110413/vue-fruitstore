@@ -2,8 +2,15 @@
   <div class="products pt-4">
     <loading :active.sync="isLoading"></loading>
     <div class="container" v-if="products[0]">
-      <div class="d-sm-flex justify-content-sm-end">
-        <div class="form-group">
+      <div class="d-sm-flex justify-content-sm-end mb-3">
+        <div class="d-lg-flex align-items-lg-center d-none mr-3">
+          <p class="mb-0">顯示方式：</p>
+          <input type="radio" id="standard" value="standard" v-model="display" class="mr-1" />
+          <label for="standard" class="mb-0 mr-2">標準</label>
+          <input type="radio" id="list" value="list" v-model="display" class="mr-1" />
+          <label for="list" class="mb-0">序列</label>
+        </div>
+        <div class="form-group mb-0">
           <select
             name="sort"
             id="sort"
@@ -17,7 +24,7 @@
           </select>
         </div>
       </div>
-      <div class="row">
+      <div class="row" v-if="display === 'standard'">
         <div class="col-lg-3 col-md-6 mb-5" v-for="item in filterProducts" :key="item.id">
           <router-link :to="`/product/${item.id}`" class="text-decoration-none text-dark">
             <div class="card">
@@ -35,12 +42,7 @@
                   >
                     <i class="fas fa-heart fa-lg text-white"></i>
                   </a>
-                  <a
-                    href="#"
-                    class="btn favorite"
-                    @click.prevent="addfavorite(item)"
-                    v-else
-                  >
+                  <a href="#" class="btn favorite" @click.prevent="addfavorite(item)" v-else>
                     <i class="far fa-heart fa-lg text-white"></i>
                   </a>
                   <span class="more_info">看更多內容</span>
@@ -75,6 +77,49 @@
           </router-link>
         </div>
       </div>
+      <table class="table" v-if="display === 'list'">
+        <thead>
+          <tr>
+            <th scope="col">品名</th>
+            <th scope="col" class="text-center d-none d-sm-table-cell">單位</th>
+            <th scope="col" class="text-right">原價</th>
+            <th scope="col" class="text-right">網路價</th>
+            <th scope="col" class="text-center">加入購物車</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in filterProducts" :key="item.id">
+            <th class="align-middle" scope="row">
+              <router-link :to="`/product/${item.id}`">
+                <img
+                  :src="item.imageUrl[0]"
+                  class="img-fluid mr-3 d-none d-md-inline-block"
+                  width="200px"
+                />
+              </router-link>
+              {{ item.title }}
+            </th>
+            <td class="align-middle text-center">
+              {{ item.unit }}
+            </td>
+            <td class="align-middle text-right">
+              <del>{{ item.origin_price | money }}</del>
+            </td>
+            <td class="align-middle text-right">
+              {{ item.price | money }}
+            </td>
+            <td class="align-middle text-center">
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click.prevent="addToCart(item.id)"
+              >
+                <i class="fas fa-cart-plus mr-1"></i>加入購物車
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -92,6 +137,7 @@ export default {
       sort: '',
       favoriteList: [],
       favoriteId: [],
+      display: 'standard',
     };
   },
   created() {
