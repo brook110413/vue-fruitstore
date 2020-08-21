@@ -45,9 +45,10 @@ export default {
 .completeBanner {
   background-image: url(../../../public/images/completeBanner.jpg);
   height: 100vh;
-  width: 100vh;
   margin-bottom: -16px;
-  margin-right: -15px;
+  @media (min-width: 1200px) {
+    width: 100vh;
+  }
 }
 
 .completeTitle {
