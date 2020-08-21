@@ -18,7 +18,7 @@
             placeholder="請輸電子郵件"
             v-model="user.email"
           />
-          <span class="text-danger text-left"> {{errors[0]}} </span>
+          <span class="text-danger text-left"> {{ errors[0] }} </span>
         </Validation-provider>
       </div>
       <div class="form-group">
@@ -34,7 +34,7 @@
             required
             v-model="user.password"
           />
-          <span class="text-danger text-left"> {{errors[0]}} </span>
+          <span class="text-danger text-left"> {{ errors[0] }} </span>
         </Validation-provider>
       </div>
       <button type="submit" class="btn btn-primary btn-block">
@@ -64,14 +64,13 @@ export default {
     logIn() {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/api/auth/login`;
-      this.$http.post(api, this.user)
+      this.$http
+        .post(api, this.user)
         .then((res) => {
           const { token } = res.data;
           const { expired } = res.data;
           // 將取得的token存入cookie
-          document.cookie = `token=${token}; expires=${new Date(
-            expired * 1000,
-          )};`;
+          document.cookie = `token=${token}; expires=${new Date(expired * 1000)};`;
           this.isLoading = false;
           this.$router.push('/admin/products');
         })
@@ -94,7 +93,7 @@ export default {
 </script>
 
 <style>
-  .login{
-    height: 100vh;
-  }
+.login {
+  height: 100vh;
+}
 </style>

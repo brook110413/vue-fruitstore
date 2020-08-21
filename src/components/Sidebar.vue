@@ -3,7 +3,8 @@
     <div class="sidebar-sticky pt-3">
       <h6
         class="sidebar-heading d-flex justify-content-between
-            align-items-center px-3 mt-3 mb-1 text-muted font-weight-bold">
+            align-items-center px-3 mt-3 mb-1 text-muted font-weight-bold"
+      >
         <span>管理員操作</span>
       </h6>
       <ul class="nav flex-column">
@@ -74,7 +75,8 @@
   color: #333;
 }
 
-.sidebar .router-link-exact-active, .sidebar .nav-link:hover {
+.sidebar .router-link-exact-active,
+.sidebar .nav-link:hover {
   color: #00796b;
   padding-left: 2rem;
 }

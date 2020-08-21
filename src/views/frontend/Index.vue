@@ -42,8 +42,7 @@
                 </a>
               </div>
             </div>
-            <div
-            class="col-md-8 col-6 d-flex align-items-center">
+            <div class="col-md-8 col-6 d-flex align-items-center">
               <p>
                 炎炎夏日，最需要好吃的水果來消暑，選用當季水果，產地直送，無農藥噴灑，健康的首選。
               </p>
@@ -106,10 +105,7 @@
       <h2 class="text-center mb-3 h3 font-weight-bold">熱銷商品</h2>
       <swiper :options="swiperOption">
         <swiper-slide v-for="item in sales" :key="item.id">
-          <router-link
-            :to="`/product/${item.id}`"
-            class="text-decoration-none text-dark"
-          >
+          <router-link :to="`/product/${item.id}`" class="text-decoration-none text-dark">
             <div class="card">
               <div class="product__img__wrap">
                 <div

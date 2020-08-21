@@ -124,8 +124,8 @@
                 </Validation-provider>
               </div>
               <div class="form-group">
-                  <label for="description">商品說明</label>
-                  <vue-editor id="description" v-model="productTemp.description"></vue-editor>
+                <label for="description">商品說明</label>
+                <vue-editor id="description" v-model="productTemp.description"></vue-editor>
               </div>
               <input type="checkbox" id="enabled" v-model="productTemp.enabled" />
               <label for="enabled">是否啟用</label>

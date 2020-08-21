@@ -7,7 +7,12 @@
         class="btn btn-primary font-weight-bold"
         data-toggle="modal"
         data-target="#couponModal"
-        @click="submit = 'add';couponTemp = {};due_date = '';due_time = ''"
+        @click="
+          submit = 'add';
+          couponTemp = {};
+          due_date = '';
+          due_time = '';
+        "
       >
         建立新的優惠券
       </button>
@@ -31,11 +36,15 @@
           <td class="text-secondary text-center" v-else>不啟用</td>
           <td class="text-center">
             <button
-            type="button"
-            class="btn btn-outline-primary btn-sm mr-2"
-            data-toggle="modal"
-            data-target="#couponModal"
-            @click="submit = 'edit';getCouponTemp(item)">
+              type="button"
+              class="btn btn-outline-primary btn-sm mr-2"
+              data-toggle="modal"
+              data-target="#couponModal"
+              @click="
+                submit = 'edit';
+                getCouponTemp(item);
+              "
+            >
               <i class="fas fa-edit"></i>
             </button>
             <button
@@ -59,17 +68,19 @@
         tabindex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+        aria-hidden="true"
+      >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header bg-primary">
               <h5 class="modal-title text-white" id="exampleModalLabel">建立優惠券</h5>
               <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              @click="cancel()">
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                @click="cancel()"
+              >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -103,12 +114,13 @@
               <div class="form-group">
                 <label for="due_time">到期時間</label>
                 <input
-                id="due_time"
-                v-model="due_time"
-                step="1"
-                type="time"
-                class="form-control"
-                required />
+                  id="due_time"
+                  v-model="due_time"
+                  step="1"
+                  type="time"
+                  class="form-control"
+                  required
+                />
               </div>
               <div class="form-group">
                 <label for="discount_percent">折扣百分比</label>
@@ -133,10 +145,13 @@
             </div>
             <div class="modal-footer">
               <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-              @click="cancel()">取消</button>
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                @click="cancel()"
+              >
+                取消
+              </button>
               <button type="button" class="btn btn-primary" @click="updateCoupon()">確認</button>
             </div>
           </div>
@@ -149,17 +164,19 @@
         tabindex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+        aria-hidden="true"
+      >
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header bg-danger">
               <h5 class="modal-title text-white" id="exampleModalLabel">刪除優惠券</h5>
               <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              @click="cancel()">
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                @click="cancel()"
+              >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -172,10 +189,13 @@
             </div>
             <div class="modal-footer">
               <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-              @click="cancel()">取消</button>
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                @click="cancel()"
+              >
+                取消
+              </button>
               <button type="button" class="btn btn-danger" @click="delCoupon()">確認刪除</button>
             </div>
           </div>
@@ -243,12 +263,11 @@ export default {
       // 日期格式 Y-m-d H:i:s，例如：「2020-06-16 09:31:18」
       this.couponTemp.deadline_at = `${this.due_date} ${this.due_time}`;
 
-      this.$http[method](api, this.couponTemp)
-        .then(() => {
-          this.isLoading = false;
-          this.getCoupons();
-          $('#couponModal').modal('hide');
-        });
+      this.$http[method](api, this.couponTemp).then(() => {
+        this.isLoading = false;
+        this.getCoupons();
+        $('#couponModal').modal('hide');
+      });
     },
     delCoupon() {
       this.isLoading = true;

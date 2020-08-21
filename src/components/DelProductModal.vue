@@ -1,12 +1,13 @@
 <template>
   <div
-  class="modal fade"
-  id="delProductModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <loading :active.sync="isLoading"></loading>
+    class="modal fade"
+    id="delProductModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <loading :active.sync="isLoading"></loading>
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header bg-danger">
@@ -16,8 +17,11 @@
           </button>
         </div>
         <div class="modal-body">
-          <p class="h4">是否刪除
-            <span class="text-danger font-weight-bold">{{productTemp.title}}</span> 商品(刪除後將無法回復)</p>
+          <p class="h4">
+            是否刪除
+            <span class="text-danger font-weight-bold">{{ productTemp.title }}</span>
+            商品(刪除後將無法回復)
+          </p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
@@ -49,12 +53,11 @@ export default {
     delProduct() {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UUID}/admin/ec/product/${this.productTemp.id}`;
-      this.$http.delete(url)
-        .then(() => {
-          this.$emit('update');
-          $('#delProductModal').modal('hide');
-          this.isLoading = false;
-        });
+      this.$http.delete(url).then(() => {
+        this.$emit('update');
+        $('#delProductModal').modal('hide');
+        this.isLoading = false;
+      });
     },
   },
 };

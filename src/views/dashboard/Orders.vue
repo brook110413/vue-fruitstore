@@ -26,16 +26,16 @@
           <td>
             <div class="custom-control custom-switch">
               <input
-              type="checkbox"
-              class="custom-control-input"
-              :id="item.id" v-model="item.paid"
-              @change="setOrderPaid(item)" />
-              <label class="custom-control-label" :for="item.id"
-                >
+                type="checkbox"
+                class="custom-control-input"
+                :id="item.id"
+                v-model="item.paid"
+                @change="setOrderPaid(item)"
+              />
+              <label class="custom-control-label" :for="item.id">
                 <span class="text-success font-weight-bolder" v-if="item.paid">已付款</span>
                 <span v-else>尚未付款</span>
-                </label
-              >
+              </label>
             </div>
           </td>
         </tr>
@@ -79,10 +79,9 @@ export default {
       if (!item.paid) {
         api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UUID}/admin/ec/orders/${item.id}/unpaid`;
       }
-      this.$http.patch(api, item.id)
-        .then(() => {
-          this.isLoading = false;
-        });
+      this.$http.patch(api, item.id).then(() => {
+        this.isLoading = false;
+      });
     },
   },
 };

@@ -59,8 +59,10 @@
               <tr v-for="(item, key) in order.products" :key="key">
                 <td class="align-middle" scope="row">
                   <img
-                  :src="item.product.imageUrl[0]"
-                  class="img-fluid mr-3 d-none d-md-inline-block" width="100px" />
+                    :src="item.product.imageUrl[0]"
+                    class="img-fluid mr-3 d-none d-md-inline-block"
+                    width="100px"
+                  />
                   {{ item.product.title }}
                 </td>
                 <td class="align-middle">{{ item.quantity }} {{ item.product.unit }}</td>
@@ -78,8 +80,9 @@
               <tr>
                 <td></td>
                 <td class="h4 font-weight-bold">總計</td>
-                <td
-                class="text-right h4 font-weight-bold">{{ Math.round(order.amount) | money }}</td>
+                <td class="text-right h4 font-weight-bold">
+                  {{ Math.round(order.amount) | money }}
+                </td>
               </tr>
             </tbody>
           </table>

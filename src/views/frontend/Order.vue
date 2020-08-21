@@ -7,24 +7,30 @@
           <ul class="list-unstyled d-flex justify-content-around mb-1">
             <li class="d-flex flex-column align-items-center">
               <span
-              class="rounded-circle bg-primary
+                class="rounded-circle bg-primary
                 d-flex justify-content-center
                 align-items-center text-white"
-              style="width:20px; height:20px">1</span>購物車
+                style="width:20px; height:20px"
+                >1</span
+              >購物車
             </li>
             <li class="d-flex flex-column align-items-center">
               <span
-              class="rounded-circle bg-primary
+                class="rounded-circle bg-primary
                 d-flex justify-content-center
                 align-items-center text-white"
-              style="width:20px; height:20px">2</span>填寫資料
+                style="width:20px; height:20px"
+                >2</span
+              >填寫資料
             </li>
             <li class="d-flex flex-column align-items-center">
               <span
-              class="rounded-circle bg-primary
+                class="rounded-circle bg-primary
                 d-flex justify-content-center
                 align-items-center text-white"
-              style="width:20px; height:20px">3</span>訂單確認
+                style="width:20px; height:20px"
+                >3</span
+              >訂單確認
             </li>
           </ul>
           <div class="progress">
@@ -45,7 +51,9 @@
             <!-- 姓名 -->
             <div class="form-group">
               <validation-provider rules="required" v-slot="{ errors, classes }">
-                <label for="username">收件人姓名 <span class="text-danger align-middle">*</span> </label>
+                <label for="username"
+                  >收件人姓名 <span class="text-danger align-middle">*</span>
+                </label>
                 <input
                   type="text"
                   class="form-control"
@@ -113,7 +121,9 @@
             <!-- 付款方式 -->
             <div class="form-group">
               <validation-provider rules="required" v-slot="{ errors, classes }">
-                <label for="payment">付款方式 <span class="text-danger align-middle">*</span></label>
+                <label for="payment"
+                  >付款方式 <span class="text-danger align-middle">*</span></label
+                >
                 <select
                   name="付款方式"
                   id="payment"
@@ -188,7 +198,8 @@ export default {
       if (this.coupon.enabled) {
         order.coupon = this.coupon.code;
       }
-      this.$http.post(api, order)
+      this.$http
+        .post(api, order)
         .then(() => {
           this.$bus.$emit('updateCart');
           this.$router.push('/checkout');
