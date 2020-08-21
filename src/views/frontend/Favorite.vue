@@ -4,14 +4,26 @@
     <div class="container">
       <div class="d-flex justify-content-center" v-if="!favoriteList[0]">
         <div>
-          <h2 class="favorite__title mb-3 h5">追蹤清單內無商品，請添加商品至清單內</h2>
-          <a href="#" @click.prevent="category = '所有商品';toProducts();" class="text-dark">
-            <i class="fas fa-angle-left mr-2"></i>回商城</a
+          <h2 class="favorite__title mb-3 h5">暫時無追蹤商品，請添加商品</h2>
+          <a
+            href="#"
+            @click.prevent="
+              category = '所有商品';
+              toProducts();
+            "
+            class="text-dark"
+          >
+            <i class="fas fa-angle-left mr-2"></i>去逛逛</a
           >
         </div>
       </div>
       <div v-else>
-        <h2 class="favoriteTitle text-center h3 mb-4 pb-3">我的追蹤清單</h2>
+        <div class="favoriteTitle d-flex justify-content-between align-items-center mb-4 pb-3">
+          <h2 class="h3 mb-0 font-weight-bold">我的追蹤清單</h2>
+          <p class="mb-0 h4 font-weight-bold">
+            共 <span class="text-danger"> {{ favoriteList.length }} </span> 項
+          </p>
+        </div>
         <div class="row">
           <div class="col-lg-3 col-md-6 mb-5" v-for="item in favoriteList" :key="item.id">
             <router-link :to="`/product/${item.id}`" class="text-decoration-none text-dark">
@@ -46,9 +58,7 @@
                   <div class="d-flex justify-content-between">
                     <div>
                       <del class="h6">原價 {{ item.origin_price | money }} 元</del>
-                      <p class="h5 font-weight-bold">
-                        網路價 {{ item.price | money }} 元
-                      </p>
+                      <p class="h5 font-weight-bold">網路價 {{ item.price | money }} 元</p>
                     </div>
                   </div>
                 </div>
@@ -151,7 +161,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.favorite__title{
+.favorite__title {
   @media (min-width: 768px) {
     font-size: 32px;
   }

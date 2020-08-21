@@ -327,8 +327,8 @@ export default {
   bottom: 9%;
   border-radius: 50%;
   border: 1px solid #9e9e9e;
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   padding: 6px;
   z-index: 10;
   background: #fff;

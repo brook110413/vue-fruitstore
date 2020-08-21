@@ -6,12 +6,15 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
 .btn:active,
 .btn:focus,
-.btn.active {
+.btn.active,
+button:active,
+button:focus {
   box-shadow: none;
+  outline: none;
 }
