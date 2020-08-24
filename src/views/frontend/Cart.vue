@@ -76,11 +76,13 @@
               <tbody>
                 <tr v-for="item in cart" :key="item.product.id">
                   <td class="align-middle" scope="row">
-                    <img
-                      :src="item.product.imageUrl[0]"
-                      class="img-fluid mr-3 d-none d-md-inline-block"
-                      width="100px"
-                    />
+                    <router-link :to="`/product/${item.product.id}`">
+                      <img
+                        :src="item.product.imageUrl[0]"
+                        class="img-fluid mr-3 d-none d-md-inline-block"
+                        width="100px"
+                      />
+                    </router-link>
                     {{ item.product.title }}
                   </td>
                   <td class="align-middle">
@@ -172,7 +174,7 @@
                       套用優惠碼
                     </button>
                   </div>
-                  <p class="mb-2" v-if="!coupon.enabled">優惠碼輸入 coupon 試試</p>
+                  <p class="mb-2" v-if="!coupon.enabled">優惠碼輸入 coupon 即享 9 折優惠</p>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4 class="mb-0 font-weight-bold">總計</h4>
