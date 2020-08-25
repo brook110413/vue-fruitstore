@@ -76,7 +76,7 @@
               <tbody>
                 <tr v-for="item in cart" :key="item.product.id">
                   <td class="align-middle" scope="row">
-                    <router-link :to="`/product/${item.product.id}`">
+                    <router-link :to="`/product/${item.product.id}`" target="_blank">
                       <img
                         :src="item.product.imageUrl[0]"
                         class="img-fluid mr-3 d-none d-md-inline-block"
