@@ -158,6 +158,7 @@
         @addCoupon="getCoupon"
         @fliterProduct="getCategory"
         @removeCoupon="removeCoupon()"
+        @changeCategory="changeCategory"
         :coupon="coupon"
         :keyword="keyword"
         :category="category"
@@ -274,6 +275,9 @@ export default {
     },
     goTop() {
       $('html,body').animate({ scrollTop: 0 }, 333);
+    },
+    changeCategory(para) {
+      this.category = para;
     },
   },
 };

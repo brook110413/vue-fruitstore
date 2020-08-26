@@ -134,9 +134,11 @@ export default {
       favoriteList: [],
       favoriteId: [],
       display: 'standard',
+      // category: '',
     };
   },
   created() {
+    this.$emit('changeCategory', this.$route.params.category);
     this.getProducts();
     this.favoriteList = JSON.parse(localStorage.getItem('favoriteList')) || [];
     this.favoriteId = JSON.parse(localStorage.getItem('favoriteId')) || [];
