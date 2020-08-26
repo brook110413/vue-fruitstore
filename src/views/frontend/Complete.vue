@@ -48,10 +48,6 @@ $public: '../../../public';
   background-image: url($public + '/images/completeBanner.jpg');
   height: 100vh;
   margin-bottom: -16px;
-  width: 83.8vh;
-  @media (min-width: 1200px) {
-    width: 83.8vh;
-  }
 }
 
 .completeTitle {
