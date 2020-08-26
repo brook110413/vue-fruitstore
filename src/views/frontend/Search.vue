@@ -35,9 +35,9 @@
         <div class="col-lg-3 col-md-6 mb-5" v-for="item in filterProducts" :key="item.id">
           <router-link :to="`/product/${item.id}`" class="text-decoration-none text-dark">
             <div class="card">
-              <div class="product__img__wrap">
+              <div class="product__wrap">
                 <div
-                  class="product__img bg-cover position-relative"
+                  class="product__wrap__img bg-cover position-relative"
                   style="height: 200px"
                   :style="{ backgroundImage: `url(${item.imageUrl[0]})` }"
                 >
@@ -52,7 +52,7 @@
                   <a href="#" class="btn favorite" @click.prevent="addfavorite(item)" v-else>
                     <i class="far fa-heart fa-lg text-white"></i>
                   </a>
-                  <span class="more_info">看更多內容</span>
+                  <span class="moreInfo">看更多內容</span>
                 </div>
               </div>
               <div class="card-body">
@@ -260,17 +260,17 @@ export default {
   transition: all 0.5s;
   &:hover {
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-    .more_info {
+    .moreInfo {
       opacity: 1;
     }
   }
 }
 
-.product__img__wrap {
+.product__wrap {
   overflow: hidden;
 }
 
-.product__img {
+.product__wrap__img {
   transition: all 0.3s ease-in-out;
   &:hover {
     transform: scale(1.04);
@@ -285,11 +285,11 @@ export default {
   right: 0;
 }
 
-.more_info {
+.moreInfo {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: #ffb74d;
+  background: #C75200;
   color: #ffffff;
   padding: 1rem 1.25rem 0.75rem 1.25rem;
   clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);

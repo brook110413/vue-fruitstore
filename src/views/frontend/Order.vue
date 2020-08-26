@@ -159,7 +159,12 @@
               <router-link to="/cart" class="text-dark">
                 <i class="fas fa-angle-left mr-2"></i>回購物車</router-link
               >
-              <button type="submit" class="btn btn-primary" :disabled="invalid">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                :class="{'notAllowed':invalid}"
+                :disabled="invalid"
+              >
                 提交訂單
               </button>
             </div>
@@ -218,3 +223,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  .notAllowed {
+    cursor: not-allowed;
+  }
+</style>

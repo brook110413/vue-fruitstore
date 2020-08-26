@@ -236,10 +236,12 @@ export default {
       isLoading: false,
       keyword: '',
       category: '',
+      year: '',
     };
   },
   created() {
     this.getCart();
+    this.year = new Date().getFullYear();
   },
   mounted() {
     this.$bus.$on('updateCart', () => {
@@ -272,11 +274,6 @@ export default {
     },
     goTop() {
       $('html,body').animate({ scrollTop: 0 }, 333);
-    },
-  },
-  computed: {
-    year() {
-      return `© ${new Date().getFullYear()}`;
     },
   },
 };

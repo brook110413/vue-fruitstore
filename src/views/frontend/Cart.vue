@@ -174,7 +174,7 @@
                       套用優惠碼
                     </button>
                   </div>
-                  <p class="mb-2" v-if="!coupon.enabled">優惠碼輸入 coupon 即享 9 折優惠</p>
+                  <p class="mb-2 font-italic" v-if="!coupon.enabled">優惠碼輸入 coupon 即享 9 折優惠</p>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4 class="mb-0 font-weight-bold">總計</h4>

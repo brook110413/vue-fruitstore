@@ -248,8 +248,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$public: '../../../public';
+
 .banner {
-  background-image: url(../../../public/images/banner.jpg);
+  background-image: url($public + '/images/banner.jpg');
   height: 60vh;
   &__title {
     @media (min-width: 576px) {

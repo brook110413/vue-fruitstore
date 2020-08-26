@@ -42,12 +42,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$public: '../../../public';
+
 .completeBanner {
-  background-image: url(../../../public/images/completeBanner.jpg);
+  background-image: url($public + '/images/completeBanner.jpg');
   height: 100vh;
   margin-bottom: -16px;
+  width: 83.8vh;
   @media (min-width: 1200px) {
-    width: 100vh;
+    width: 83.8vh;
   }
 }
 
