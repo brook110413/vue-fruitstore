@@ -134,7 +134,6 @@ export default {
       favoriteList: [],
       favoriteId: [],
       display: 'standard',
-      // category: '',
     };
   },
   created() {
